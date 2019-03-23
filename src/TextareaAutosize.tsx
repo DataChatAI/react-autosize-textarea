@@ -126,7 +126,7 @@ export class TextareaAutosize extends React.Component<TextareaAutosize.Props, Te
 
   getLocals = () => {
     const {
-      props: { onResize, maxRows, onChange, style, innerRef, ...props },
+      props: { onResize, maxRows, onChange, style, ...props },
       state: { lineHeight },
       saveDOMNodeRef
     } = this;
@@ -142,9 +142,9 @@ export class TextareaAutosize extends React.Component<TextareaAutosize.Props, Te
   }
 
   render() {
-    const { children, saveDOMNodeRef, ...locals } = this.getLocals();
+    const { children, innerRef, ...locals } = this.getLocals();
     return (
-      <textarea {...locals} ref={saveDOMNodeRef}>
+      <textarea {...locals} ref={innerRef}>
         {children}
       </textarea>
     );
