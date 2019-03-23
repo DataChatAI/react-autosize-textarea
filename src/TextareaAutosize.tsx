@@ -51,7 +51,7 @@ export class TextareaAutosize extends React.Component<TextareaAutosize.Props, Te
     rows: PropTypes.number,
     maxRows: PropTypes.number,
     onResize: PropTypes.func,
-    innerRef: PropTypes.func,
+    innerRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
     async: PropTypes.bool
   }
 
@@ -112,30 +112,16 @@ export class TextareaAutosize extends React.Component<TextareaAutosize.Props, Te
     onChange && onChange(e);
   }
 
-  saveDOMNodeRef = (ref: HTMLTextAreaElement | null) => {
-    if (ref) {
-      const { innerRef } = this.props;
-
-      if (innerRef) {
-        innerRef(ref);
-      }
-
-      this.textarea = ref;
-    }
-  }
-
   getLocals = () => {
     const {
       props: { onResize, maxRows, onChange, style, ...props },
       state: { lineHeight },
-      saveDOMNodeRef
     } = this;
 
     const maxHeight = maxRows && lineHeight ? lineHeight * maxRows : null;
 
     return {
       ...props,
-      saveDOMNodeRef,
       style: maxHeight ? { ...style, maxHeight } : style,
       onChange: this.onChange
     };

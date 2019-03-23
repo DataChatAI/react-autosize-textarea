@@ -44,9 +44,7 @@ export declare class TextareaAutosize extends React.Component<TextareaAutosize.P
     componentWillUnmount(): void;
     updateLineHeight: () => void;
     onChange: (e: React.SyntheticEvent<HTMLTextAreaElement>) => void;
-    saveDOMNodeRef: (ref: HTMLTextAreaElement | null) => void;
     getLocals: () => {
-        saveDOMNodeRef: (ref: HTMLTextAreaElement | null) => void;
         style: React.CSSProperties | undefined;
         onChange: (e: React.SyntheticEvent<HTMLTextAreaElement>) => void;
         children?: React.ReactNode;
